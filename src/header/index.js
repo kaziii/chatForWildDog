@@ -6,7 +6,7 @@ class HeaderComponent extends React.Component {
     render() {
 
         return (
-            <Toolbar>
+            <Toolbar modifier="quiet">
             	<div className='center'>header</div>
             </Toolbar>
         );

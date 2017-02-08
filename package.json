@@ -18,6 +18,8 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-onsenui": "^1.1.0",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
     "webpack": "^2.2.1",
     "wilddog": "^2.5.0"
   },
