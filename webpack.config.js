@@ -39,9 +39,12 @@ var config = {
             test: /\.css$/,
             use: [
               'style-loader',
-              'css-loader?modules',
-              'postcss-loader',
-            ],
+              'css-loader'
+            ]
+          },
+          {
+            test: /\.(svg|ttf|eot|woff|woff2)$/,
+            loader: 'file-loader?name=fonts/[name].[ext]'
           },
         ],
       }

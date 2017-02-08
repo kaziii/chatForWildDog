@@ -1,11 +1,14 @@
 import React from 'react'
+import { Toolbar } from 'react-onsenui'
 
 class HeaderComponent extends React.Component {
 
     render() {
 
         return (
-            <div>header</div>
+            <Toolbar>
+            	<div className='center'>header</div>
+            </Toolbar>
         );
     }
 }

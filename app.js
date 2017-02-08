@@ -11,6 +11,8 @@ var path = require('path');
 var app = express();
 var router = express.Router();
 
+app.use(express.static('public'));
+
 app.get('/', function(req, res) {
 
     res.sendFile(path.resolve(__dirname, 'index.html'));

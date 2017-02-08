@@ -12,9 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.1",
+    "file-loader": "^0.10.0",
+    "onsenui": "^2.1.0",
     "path": "^0.12.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-onsenui": "^1.1.0",
     "webpack": "^2.2.1",
     "wilddog": "^2.5.0"
   },
