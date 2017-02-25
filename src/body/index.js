@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toolbar, Page } from 'react-onsenui'
 
 class BodyComponent extends React.Component {
 

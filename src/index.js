@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
+import { Page } from 'react-onsenui';
 import HeaderComponent from './header/';
 import BodyComponent from './body/';
 import FooterComponent from './footer/';
@@ -16,15 +17,27 @@ import Wilddog from 'wilddog';
 
 // let store = createStore();
 class ApplicationComponent extends React.Component {
+    
+    renderToolbar() {
+
+    	return (
+    		<HeaderComponent />
+    	)
+    }
+
+    renderBottomToolbar() {
+
+    	return (
+    		<FooterComponent />
+		)
+    }
 
     render() {
 
         return (
-            <div>
-                <HeaderComponent />
+            <Page renderToolbar={this.renderToolbar} renderBottomToolbar={this.renderBottomToolbar}>
                 <BodyComponent />
-                <FooterComponent />
-            </div>
+            </Page>
         );
     }
 }

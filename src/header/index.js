@@ -7,7 +7,7 @@ class HeaderComponent extends React.Component {
 
         return (
             <Toolbar modifier="quiet">
-            	<div className='center'>header</div>
+            	<div className='center'>WIDDOG_CHAT</div>
             </Toolbar>
         );
     }
