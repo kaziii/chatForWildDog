@@ -20,6 +20,7 @@
     "react-onsenui": "^1.1.0",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "webpack": "^2.2.1",
     "wilddog": "^2.5.0"
   },

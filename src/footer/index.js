@@ -3,6 +3,11 @@ import { BottomToolbar, Page, ToolBar, Input } from 'react-onsenui';
 
 class FooterComponent extends React.Component {
 
+	sendMessage = () => {
+
+		this.props.sendMessage();
+	}
+
 	renderToolbar() {
 
 		return (
@@ -27,6 +32,9 @@ class FooterComponent extends React.Component {
 		    	    	paddingRight: 15,
 		    	    	color: '#616161'
 		    	    }}
+
+		    	    onClick={this.sendMessage}
+
 		    	    >Send</span>
 	    		</div>
         	</BottomToolbar>
