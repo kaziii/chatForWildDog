@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 // import { createStore } from 'redux';
 
 import { Page } from 'react-onsenui';
@@ -24,10 +24,6 @@ const store = createStore(
 	applyMiddleware(thunk)
 );
 
-// let store = createStore();
-
-
-console.error(store.dispatch(getItem()));
 
 class ApplicationComponent extends React.Component {
     
@@ -53,13 +49,30 @@ class ApplicationComponent extends React.Component {
     render() {
 
         return (
-        	<Provider store={store} key='provider'>
-	            <Page renderToolbar={this.renderToolbar} renderBottomToolbar={this.renderBottomToolbar}>
-	                <BodyComponent author='john'/>
-	            </Page>
-            </Provider>
+	        <Page renderToolbar={this.renderToolbar} renderBottomToolbar={this.renderBottomToolbar}>
+	            <BodyComponent />
+	        </Page>
         );
     }
 }
 
-ons.ready(() => ReactDom.render(<ApplicationComponent />, document.getElementById('root')));
+function mapStateToProps(state) {
+
+	return {
+		messages: state.messages
+	}
+}
+
+// function mapDispatchToProps
+
+const App = connect(
+	mapStateToProps
+	// mapDispatchToProps
+)(ApplicationComponent)
+
+ons.ready(() => ReactDom.render(
+<Provider store={store} key='provider'>
+	<App />
+</Provider>,
+	 document.getElementById('root'))
+);

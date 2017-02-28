@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node app.js",
-    "build": "webpack --colors"
+    "dev": "node app.js NODE_ENV=development",
+    "build": "NODE_ENV=production webpack --colors"
   },
   "author": "",
   "license": "ISC",

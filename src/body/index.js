@@ -61,20 +61,18 @@ const Message = ({data, author}) => {
 
 class BodyComponent extends React.Component {
 
-
-
     render() {
 
     	return (
-		<div>
-    		{messageList.map((data) => {
+			<div>
+	    		{messageList.map((data) => {
 
-    			return (
+	    			return (
 
-    				<Message data={data} author={this.props.author} key={data.key}/>
-    			);
-    		})}
-    	</div>
+	    				<Message data={data} author={this.props.author} key={data.key}/>
+	    			);
+	    		})}
+	    	</div>
     	)
     }
 }
