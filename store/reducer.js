@@ -3,7 +3,6 @@ import { combineReducers } from 'redux';
 
 function messages(state=[],action) {
 	switch (action.type) {
-
 		case GET_All_MESSAGE:
 			return action.payload
 		case TEST:

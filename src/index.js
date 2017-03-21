@@ -24,6 +24,10 @@ const store = createStore(
 	applyMiddleware(thunk)
 );
 
+store.dispatch(getItem());
+store.subscribe(() =>
+    console.error(store.getState())
+)
 
 class ApplicationComponent extends React.Component {
     

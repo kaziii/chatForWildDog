@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Toolbar, Page } from 'react-onsenui'
 
-const messageList = [
-	{author: 'john', message: 'hello word', key: 1},
-	{author: 'killer', message: 'my name killer', key: 2}
-];
+// const messageList = [
+// 	{author: 'john', message: 'hello word', key: 1},
+// 	{author: 'killer', message: 'my name killer', key: 2}
+// ];
 
 const Message = ({data, author}) => {
 
@@ -65,7 +66,7 @@ class BodyComponent extends React.Component {
 
     	return (
 			<div>
-	    		{messageList.map((data) => {
+	    		{this.props.messages.map((data) => {
 
 	    			return (
 
@@ -77,4 +78,26 @@ class BodyComponent extends React.Component {
     }
 }
 
-export default BodyComponent;
+BodyComponent.propTypes = {
+
+	messages: React.PropTypes.array.isRequired
+}
+
+function mapStateToProps(state) {
+
+	if (Array.isArray(state.messages) && state.messages.length > 0 ) {
+
+		return {
+			messages: state.messages	
+		}
+	}
+
+	return {
+		messages: []
+	}
+}
+
+export default connect(
+
+	mapStateToProps
+)(BodyComponent);

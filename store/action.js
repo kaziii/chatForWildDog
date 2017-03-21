@@ -18,14 +18,17 @@ export function getItem (){
 
 	return (dispatch, getState)=> {
 
-		ref.on('value',(snapshot)=>{
+		ref.once('value',(snapshot)=>{
 
 			let array = snapshot.val()
 
-			dispatch({
-				type: 'GET_All_MESSAGE',
-				payload: array.messages
-			})
+			if (array.messages.length && Array.isArray(array.messages)) {
+
+				dispatch({
+					type: 'GET_All_MESSAGE',
+					payload: array.messages
+				});
+			}
 		})
 	}
 }

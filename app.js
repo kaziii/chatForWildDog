@@ -1,15 +1,16 @@
 var express = require('express');
 var webpack = require('webpack');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+var path = require('path');
+var app = express();
+var router = express.Router();
 
 var webpackConfig = require('./webpack.config.js');
 var compiler = webpack(webpackConfig);
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
 
-var path = require('path');
-
-var app = express();
-var router = express.Router();
+require('log4js').replaceConsole();
+global.CONFIG = require('./config/dev.config');
 
 app.use(express.static('public'));
 
@@ -25,4 +26,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 
-app.listen('3000');
+app.listen(CONFIG.port, function () {
+
+	console.log(`dev start run ${CONFIG.port}`);
+});
