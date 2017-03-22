@@ -70,7 +70,7 @@ class BodyComponent extends React.Component {
 
 	    			return (
 
-	    				<Message data={data} author={this.props.author} key={data.key}/>
+	    				<Message data={data} author={this.props.author} key={this.props.messages.indexOf(data)}/>
 	    			);
 	    		})}
 	    	</div>

@@ -14,7 +14,7 @@ import 'onsenui/css/font_awesome/css/font-awesome.css';
 
 // import Wilddog from 'wilddog';
 // import createStore from '../store/store';
-import { getItem, test } from '../store/action';
+import { getItem, loginDog } from '../store/action';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -24,9 +24,11 @@ const store = createStore(
 	applyMiddleware(thunk)
 );
 
+store.dispatch(loginDog());
 store.dispatch(getItem());
+
 store.subscribe(() =>
-    console.error(store.getState())
+    store.dispatch(getItem())
 )
 
 class ApplicationComponent extends React.Component {
@@ -46,7 +48,7 @@ class ApplicationComponent extends React.Component {
     renderBottomToolbar() {
 
     	return (
-    		<FooterComponent sendMessage={this.sendMessage}/>
+    		<FooterComponent />
 		)
     }
 
