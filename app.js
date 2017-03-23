@@ -6,13 +6,13 @@ var path = require('path');
 var app = express();
 var router = express.Router();
 
-var webpackConfig = require('./webpack.config.js');
+var webpackConfig = require('./config/webpack.config');
 var compiler = webpack(webpackConfig);
 
 require('log4js').replaceConsole();
 global.CONFIG = require('./config/dev.config');
 
-app.use(express.static('public'));
+app.use(express.static('build'));
 
 app.get('/', function(req, res) {
 

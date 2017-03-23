@@ -1,19 +1,29 @@
-import Wilddog from 'wilddog';
+import { ref, auth } from '../../model/wilddog';
 
-let config = {
-	syncURL: "https://chlsg88.wilddogio.com",
-	authDomain: "chlsg88.wilddog.com"
-};
-
-wilddog.initializeApp(config);
-
-let ref = wilddog.sync().ref();
-let auth = wilddog.auth(); 
 
 // export function or action type
 
 export const GET_All_MESSAGE = 'GET_All_MESSAGE';
 export const TEST = 'TEST';
+
+export const CURRENT_USER = 'CURRENT_USER';
+export function currentUser() {
+
+	return dispatch => {
+
+		auth.onAuthStateChanged (user => {
+
+			if (user) {
+
+				console.log(user);
+			} 
+			else {
+
+				dispatch(loginDog());
+			}
+		})
+	}	
+}
 
 export const LOGIN_DOG = 'LOGIN_DOG';
 export function loginDog () {

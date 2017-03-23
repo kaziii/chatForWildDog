@@ -9,9 +9,9 @@ var config = {
 
     devtool: "inline-source-map",
 
-    entry: DEBUG ? path.resolve(__dirname, 'src/') : [
+    entry: DEBUG ? path.resolve(__dirname, '../src/') : [
 
-            path.resolve(__dirname, 'src/'),
+            path.resolve(__dirname, '../src/'),
             'webpack-hot-middleware/client?http://localhost:3000'
     ],
 

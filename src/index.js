@@ -4,9 +4,9 @@ import { Provider, connect } from 'react-redux';
 // import { createStore } from 'redux';
 
 import { Page } from 'react-onsenui';
-import HeaderComponent from './header/';
-import BodyComponent from './body/';
-import FooterComponent from './footer/';
+import HeaderComponent from './component/header/';
+import BodyComponent from './component/body/';
+import FooterComponent from './component/footer/';
 import ons from 'onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
@@ -14,21 +14,21 @@ import 'onsenui/css/font_awesome/css/font-awesome.css';
 
 // import Wilddog from 'wilddog';
 // import createStore from '../store/store';
-import { getItem, loginDog } from '../store/action';
+import { getItem, loginDog, currentUser } from './store/action';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from '../store/reducer';
+import reducer from './store/reducer';
 const store = createStore(
 	reducer,
 	applyMiddleware(thunk)
 );
 
-store.dispatch(loginDog());
+store.dispatch(currentUser());
 store.dispatch(getItem());
 
 store.subscribe(() =>
-    store.dispatch(getItem())
+    console.log(store.getState())
 )
 
 class ApplicationComponent extends React.Component {
@@ -62,23 +62,9 @@ class ApplicationComponent extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-
-	return {
-		messages: state.messages
-	}
-}
-
-// function mapDispatchToProps
-
-const App = connect(
-	mapStateToProps
-	// mapDispatchToProps
-)(ApplicationComponent)
-
 ons.ready(() => ReactDom.render(
 <Provider store={store} key='provider'>
-	<App />
+	<ApplicationComponent />
 </Provider>,
 	 document.getElementById('root'))
 );
