@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 import { setMsg } from '../../store/action';
 import { BottomToolbar, Page, ToolBar, Input } from 'react-onsenui';
 
+@connect(
+	state => ({username: state.username}),
+	dispatch => ({setMsg: message => dispatch(setMsg(message))})
+)
 class FooterComponent extends React.Component {
 	
 	constructor(props){
 		super(props);
 		this.state = {
-			input: "",
-			author: 'john'
+			input: ""
 		}
 
 	}
@@ -24,7 +27,7 @@ class FooterComponent extends React.Component {
 
 	handleClick = (message)=> {
 
-		this.props.dispatch(setMsg(message)).then(()=>{
+		this.props.setMsg(message).then(()=>{
 			this.setState({
 				input: ""
 			})
@@ -35,7 +38,7 @@ class FooterComponent extends React.Component {
 
 		this.setState({input: e.target.value})
 	}
-
+	
     render() {
 
         return (
@@ -59,7 +62,7 @@ class FooterComponent extends React.Component {
 
 		    	    onClick={this.handleClick.bind(this, {
 		    	    	message: this.state.input,
-		    	    	author: this.state.author
+		    	    	author: this.props.username
 		    	    })}
 		    	    >Send</span>
 	    		</div>
@@ -68,16 +71,14 @@ class FooterComponent extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+// const mapDispatchToProps = (dispatch, ownProps) => {
 
-	return {
+// 	return {
 
-		setMsg: (message) => {
-			bindActionCreators(setMsg(message), dispatch)	
-		}
-	}
-}
+// 		setMsg: (message) => {
+// 			bindActionCreators(setMsg(message), dispatch)	
+// 		}
+// 	}
+// }
 
-export default connect(
-	mapDispatchToProps
-)(FooterComponent);
+export default FooterComponent;

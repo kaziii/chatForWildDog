@@ -70,7 +70,7 @@ class BodyComponent extends React.Component {
 
 	    			return (
 
-	    				<Message data={data} author={this.props.author} key={this.props.messages.indexOf(data)}/>
+	    				<Message data={data} author={this.props.username} key={this.props.messages.indexOf(data)}/>
 	    			);
 	    		})}
 	    	</div>
@@ -88,12 +88,14 @@ function mapStateToProps(state) {
 	if (Array.isArray(state.messages) && state.messages.length > 0 ) {
 
 		return {
-			messages: state.messages	
+			messages: state.messages,
+			username: state.username	
 		}
 	}
 
 	return {
-		messages: []
+		messages: [],
+		username: ''
 	}
 }
 

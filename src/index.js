@@ -7,6 +7,9 @@ import { Page } from 'react-onsenui';
 import HeaderComponent from './component/header/';
 import BodyComponent from './component/body/';
 import FooterComponent from './component/footer/';
+
+import ModalComponent from './component/modal/';
+
 import ons from 'onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
@@ -24,7 +27,7 @@ const store = createStore(
 	applyMiddleware(thunk)
 );
 
-store.dispatch(currentUser());
+store.dispatch(currentUser())
 store.dispatch(getItem());
 
 store.subscribe(() =>
@@ -32,11 +35,6 @@ store.subscribe(() =>
 )
 
 class ApplicationComponent extends React.Component {
-    
-    sendMessage = () => {
-
-    	console.error('send Message!');
-    }
 
     renderToolbar() {
 
@@ -52,10 +50,17 @@ class ApplicationComponent extends React.Component {
 		)
     }
 
+    renderModal() {
+
+        return (
+            <ModalComponent />
+        )
+    }
+
     render() {
 
         return (
-	        <Page renderToolbar={this.renderToolbar} renderBottomToolbar={this.renderBottomToolbar}>
+	        <Page renderToolbar={this.renderToolbar} renderBottomToolbar={this.renderBottomToolbar} renderModal={this.renderModal}>
 	            <BodyComponent />
 	        </Page>
         );

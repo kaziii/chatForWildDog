@@ -12,7 +12,8 @@
     // Transpile React components to JavaScript
   ],
   "plugins": [
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    "transform-decorators-legacy"
     // Enables React code to work with HMR.
   ]
 }

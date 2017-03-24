@@ -11,11 +11,18 @@ export function currentUser() {
 
 	return dispatch => {
 
-		auth.onAuthStateChanged (user => {
+		return auth.onAuthStateChanged (user => {
 
 			if (user) {
 
-				console.log(user);
+				if (!user.displayName) {
+
+					return null;
+				} else {
+
+					dispatch(getIsopen());
+					dispatch(getUserName(user.displayName));
+				}
 			} 
 			else {
 
@@ -65,22 +72,6 @@ export function getItem (){
 
 			console.error(err);
 		})
-		// ref.once('value',(snapshot)=>{
-
-		// 	let array = snapshot.val();
-		// 	let vaule = [];
-
-		// 	if (array.messages) {
-		// 		for (let i in array.messages){
-		// 			vaule.push(array.messages[i])
-		// 		}
-		// 	}
-
-		// 	dispatch({
-		// 		type: 'GET_All_MESSAGE',
-		// 		payload: vaule
-		// 	});
-		// })
 	}
 }
 
@@ -93,6 +84,7 @@ export function setMsg(message) {
 		
 		return postRef.push(message).then(function(response){
 
+			console.error(response)
 			dispatch({
 				type: 'PUSH_MSG'
 			})
@@ -102,3 +94,44 @@ export function setMsg(message) {
 	}
 }
 
+export const GET_MODAL_ISOPEN = 'GET_MODAL_ISOPEN';
+
+export function getIsopen () {
+
+	return ({
+		type: 'GET_MODAL_ISOPEN',
+		payload: false
+	})
+}
+
+export function updateDispalyName (userName) {
+
+	return dispatch => {
+
+
+		auth.onAuthStateChanged(user => {
+
+			if (user) {
+
+				return user.updateProfile({displayName: userName}).then(()=>{
+
+					dispatch(currentUser());
+					dispatch(getUserName(userName));
+
+				}).catch(err=>{
+					console.error(err)
+				})
+			}
+		})
+	}
+}
+
+export const GET_USER_NAME = 'GET_USER_NAME';
+
+export function getUserName(username) {
+
+	return ({
+		type: 'GET_USER_NAME',
+		payload: username
+	})
+}
