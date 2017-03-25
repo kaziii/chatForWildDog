@@ -63,10 +63,24 @@ const Message = ({data, author}) => {
 
 class BodyComponent extends React.Component {
 
+	scrollToBottom = () => {
+
+		// const node = this.refs.endSpan;
+
+		var node = document.querySelector('.page__content');
+
+		console.error(node.scrollTop,node.scrollHeight);
+
+		node.scrollTop = node.scrollHeight
+
+		// node.scrollIntoView(false);
+	
+	}
+
 	componentDidMount () {
 
-		var scroll = ReactDom.findDOMNode(this);
-		scroll.scrollTop = scroll.scrollHeight
+		this.scrollToBottom();
+
 	}
 
     render() {
@@ -81,7 +95,7 @@ class BodyComponent extends React.Component {
 	    			);
 	    		})}
 
-		    	<div style={{height: 15}} />
+		    	<div style={{height: 15}} ref="endSpan" />
 
 	    	</div>
     	)

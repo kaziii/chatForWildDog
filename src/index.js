@@ -17,7 +17,7 @@ import 'onsenui/css/font_awesome/css/font-awesome.css';
 
 // import Wilddog from 'wilddog';
 // import createStore from '../store/store';
-import { getItem, loginDog, currentUser } from './store/action';
+import { getItem, loginDog, currentUser, onVal } from './store/action';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -29,12 +29,24 @@ const store = createStore(
 
 store.dispatch(currentUser())
 store.dispatch(getItem());
+store.dispatch(onVal());
 
 store.subscribe(() =>
     console.log(store.getState())
 )
 
 class ApplicationComponent extends React.Component {
+
+    componentDidMount(){
+
+
+        // document.querySelector('.page__content').addEventListener('scroll', function (e){
+
+        //     console.error(e);
+        // })
+
+        // scroll.scrollIntoView({behavior: "smooth"});
+    }
 
     renderToolbar() {
 
@@ -60,7 +72,7 @@ class ApplicationComponent extends React.Component {
     render() {
 
         return (
-	        <Page renderToolbar={this.renderToolbar} renderBottomToolbar={this.renderBottomToolbar} renderModal={this.renderModal}>
+	        <Page renderToolbar={this.renderToolbar} renderBottomToolbar={this.renderBottomToolbar} renderModal={this.renderModal}  >
 	            <BodyComponent />
 	        </Page>
         );
@@ -73,3 +85,4 @@ ons.ready(() => ReactDom.render(
 </Provider>,
 	 document.getElementById('root'))
 );
+

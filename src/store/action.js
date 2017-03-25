@@ -49,6 +49,16 @@ export function loginDog () {
 	}
 }
 
+export function onVal(){
+	return dispatch => {
+
+		ref.on('value', snapshot => {
+
+			dispatch(getItem());
+		})
+	}
+}
+
 export function getItem (){
 
 	return (dispatch, getState)=> {
