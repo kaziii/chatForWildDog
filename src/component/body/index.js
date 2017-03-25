@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Toolbar, Page } from 'react-onsenui'
+import { Toolbar, Page } from 'react-onsenui';
+import ReactDom from 'react-dom';
 
 // const messageList = [
 // 	{author: 'john', message: 'hello word', key: 1},
@@ -62,6 +63,12 @@ const Message = ({data, author}) => {
 
 class BodyComponent extends React.Component {
 
+	componentDidMount () {
+
+		var scroll = ReactDom.findDOMNode(this);
+		scroll.scrollTop = scroll.scrollHeight
+	}
+
     render() {
 
     	return (
@@ -73,6 +80,9 @@ class BodyComponent extends React.Component {
 	    				<Message data={data} author={this.props.username} key={this.props.messages.indexOf(data)}/>
 	    			);
 	    		})}
+
+		    	<div style={{height: 15}} />
+
 	    	</div>
     	)
     }

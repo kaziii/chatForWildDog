@@ -84,10 +84,8 @@ export function setMsg(message) {
 		
 		return postRef.push(message).then(function(response){
 
-			console.error(response)
-			dispatch({
-				type: 'PUSH_MSG'
-			})
+			dispatch(getItem());
+
 		}).catch(function(err) {
 			console.error(err)
 		})
