@@ -15,8 +15,6 @@ import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 import 'onsenui/css/font_awesome/css/font-awesome.css';
 
-// import Wilddog from 'wilddog';
-// import createStore from '../store/store';
 import { getItem, loginDog, currentUser, onVal } from './store/action';
 
 import { createStore, applyMiddleware } from 'redux';
@@ -36,17 +34,6 @@ store.subscribe(() =>
 )
 
 class ApplicationComponent extends React.Component {
-
-    componentDidMount(){
-
-
-        // document.querySelector('.page__content').addEventListener('scroll', function (e){
-
-        //     console.error(e);
-        // })
-
-        // scroll.scrollIntoView({behavior: "smooth"});
-    }
 
     renderToolbar() {
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Toolbar, Page } from 'react-onsenui';
-import ReactDom from 'react-dom';
+import { findDOMNode } from 'react-dom';
+
+import $ from 'jquery';
 
 // const messageList = [
 // 	{author: 'john', message: 'hello word', key: 1},
@@ -63,24 +65,17 @@ const Message = ({data, author}) => {
 
 class BodyComponent extends React.Component {
 
-	scrollToBottom = () => {
+	scrollToBottom (){
 
-		// const node = this.refs.endSpan;
+		var node = this.refs.endSpan;
 
-		var node = document.querySelector('.page__content');
+		node.scrollIntoView(false);
 
-		console.error(node.scrollTop,node.scrollHeight);
-
-		node.scrollTop = node.scrollHeight
-
-		// node.scrollIntoView(false);
-	
 	}
 
-	componentDidMount () {
+	componentDidUpdate () {
 
-		this.scrollToBottom();
-
+		this.scrollToBottom();		
 	}
 
     render() {
@@ -95,7 +90,7 @@ class BodyComponent extends React.Component {
 	    			);
 	    		})}
 
-		    	<div style={{height: 15}} ref="endSpan" />
+		    	<div className="end" style={{height: 15}} ref="endSpan" />
 
 	    	</div>
     	)
